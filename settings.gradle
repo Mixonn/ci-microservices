@@ -1,0 +1,3 @@
+rootProject.name = 'ci-tools-microservices'
+include 'ci-core'
+
