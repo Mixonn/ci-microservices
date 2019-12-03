@@ -1,10 +1,10 @@
-package com.osipiuk.ci.core.cicore;
+package com.cimicroservices.core;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CiCoreApplicationTests {
+class CiCoreApplicationTest {
 
     @Test
     void contextLoads() {
