@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: core
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        instanceId: ${spring.application.name}:${random.value}
