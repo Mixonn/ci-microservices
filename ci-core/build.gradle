@@ -2,13 +2,19 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
-    implementation 'org.springframework.boot:spring-boot-starter'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.2.1.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.2.1.RELEASE'
+
+
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'junit' // excluding junit 4
     }
+    compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure-processor', version: '2.2.1.RELEASE'
 
     runtime group: 'org.springframework.cloud', name: 'spring-cloud-starter-consul-all', version: '2.2.0.RELEASE'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-consul-config', version: '2.2.0.RELEASE'
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-commons', version: '2.2.0.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.2.1.RELEASE'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.0.1'
