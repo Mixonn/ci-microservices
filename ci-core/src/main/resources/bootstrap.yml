@@ -12,4 +12,5 @@ spring:
         prefix: apps/cimcroservices
         defaultContext: ${spring.application.name}
         format: YAML
-
+server:
+  port: 0

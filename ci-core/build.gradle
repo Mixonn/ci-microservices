@@ -1,11 +1,11 @@
 dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+    compile group: 'io.projectreactor', name: 'reactor-core', version: '3.3.1.RELEASE'
 
     compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.2.1.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.2.1.RELEASE'
-
-
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.2.1.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive', version: '2.2.1.RELEASE'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'junit' // excluding junit 4
@@ -22,6 +22,9 @@ dependencies {
     testImplementation 'com.tngtech.archunit:archunit:0.9.3'
     testImplementation 'de.adesso:junit-insights:1.1.0'
     testImplementation 'org.junit.platform:junit-platform-launcher:1.4.2'
+    testCompile group: "de.flapdoodle.embed", name: "de.flapdoodle.embed.mongo", version: "2.2.1-SNAPSHOT"
+    compile group: 'io.projectreactor.tools', name: 'blockhound-junit-platform', version: '1.0.1.RELEASE'
+
 }
 
 test {
