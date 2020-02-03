@@ -3,14 +3,16 @@ spring:
     name: ci-core
   cloud:
     consul:
-      host: 127.0.0.1
+      host: consul
       port: 8500
       discovery:
-        instance-id: "${spring.cloud.client.hostname}:${spring.application.name}:${random.int[1,999999]}"
+        instance-id: "${spring.cloud.client.hostname}:${spring.application.name}:${server.port}"
+        healthCheckPath: ${management.server.servlet.context-path}/health
+        healthCheckInterval: 20s
       config:
         dataKey: config
         prefix: apps/cimcroservices
         defaultContext: ${spring.application.name}
         format: YAML
 server:
-  port: 0
+  port: 8001

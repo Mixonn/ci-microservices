@@ -1,3 +1,5 @@
+import org.gradle.plugins.ide.idea.model.IdeaLanguageLevel
+
 dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
@@ -5,7 +7,6 @@ dependencies {
 
     compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.2.1.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.2.1.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive', version: '2.2.1.RELEASE'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'junit' // excluding junit 4
@@ -13,7 +14,6 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure-processor', version: '2.2.1.RELEASE'
 
     runtime group: 'org.springframework.cloud', name: 'spring-cloud-starter-consul-all', version: '2.2.0.RELEASE'
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-consul-config', version: '2.2.0.RELEASE'
     compile group: 'org.springframework.cloud', name: 'spring-cloud-commons', version: '2.2.0.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.2.1.RELEASE'
 
@@ -22,12 +22,38 @@ dependencies {
     testImplementation 'com.tngtech.archunit:archunit:0.9.3'
     testImplementation 'de.adesso:junit-insights:1.1.0'
     testImplementation 'org.junit.platform:junit-platform-launcher:1.4.2'
-    testCompile group: "de.flapdoodle.embed", name: "de.flapdoodle.embed.mongo", version: "2.2.1-SNAPSHOT"
     compile group: 'io.projectreactor.tools', name: 'blockhound-junit-platform', version: '1.0.1.RELEASE'
 
+}
+
+sourceSets {
+    main {
+        java { srcDirs = ['src/main/java'] }
+    }
+    test {
+        java { srcDirs = ['src/test/java'] }
+    }
 }
 
 test {
     useJUnitPlatform()
     systemProperty 'de.adesso.junitinsights.enabled', 'true'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.cimicroservices.core.CiCoreApplication'
+    }
+}
+
+idea {
+    module {
+        inheritOutputDirs = false
+        outputDir = file('../out/production')
+        testOutputDir = file('../out/test')
+        languageLevel = new IdeaLanguageLevel('11')
+        jdkName = '11'
+        downloadJavadoc = true
+        downloadSources = true
+    }
 }

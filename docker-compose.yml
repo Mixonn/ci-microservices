@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  consul:
+    image: consul
+    container_name: consul
+    hostname: consul
+    ports:
+      - "8500:8500"
+#    environment:
+#      CONSUL_BIND_INTERFACE: eth0
+  ci-core:
+    container_name: ci-core
+    hostname: ci-core
+    build: ci-core
+    ports:
+    - "8001:8001"
+
