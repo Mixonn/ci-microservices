@@ -7,5 +7,4 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 @Configuration
 @EnableWebFlux
 @EnableDiscoveryClient
-public class CiCoreConfiguration {
-}
+public class CiCoreConfiguration {}

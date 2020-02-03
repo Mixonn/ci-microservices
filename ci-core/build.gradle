@@ -1,4 +1,20 @@
+import org.gradle.internal.jvm.Jvm
 import org.gradle.plugins.ide.idea.model.IdeaLanguageLevel
+
+buildscript {
+    dependencies {
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:3.21.1"
+    }
+    tasks {
+        build.dependsOn 'spotlessApply'
+    }
+}
+
+plugins {
+    id "com.diffplug.gradle.spotless" version "3.21.1"
+}
+
+println "Building $project.name with gradle $gradle.gradleVersion on JVM ${Jvm.current()}"
 
 dependencies {
     compileOnly 'org.projectlombok:lombok'
@@ -7,6 +23,7 @@ dependencies {
 
     compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.2.1.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.2.1.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.2.1.RELEASE'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'junit' // excluding junit 4
@@ -15,7 +32,6 @@ dependencies {
 
     runtime group: 'org.springframework.cloud', name: 'spring-cloud-starter-consul-all', version: '2.2.0.RELEASE'
     compile group: 'org.springframework.cloud', name: 'spring-cloud-commons', version: '2.2.0.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.2.1.RELEASE'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.0.1'
     testImplementation 'org.mockito:mockito-junit-jupiter:2.23.0'
@@ -55,5 +71,15 @@ idea {
         jdkName = '11'
         downloadJavadoc = true
         downloadSources = true
+    }
+}
+
+spotless {
+    java {
+        encoding 'UTF-8'
+        target project.fileTree(project.rootDir) {
+            include '**/*.java'
+        }
+        googleJavaFormat()
     }
 }

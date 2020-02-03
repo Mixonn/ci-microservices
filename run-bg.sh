@@ -1,5 +1,5 @@
 #!/bin/sh
-
+gradle clean build
 docker-compose up -d consul
 while ! curl -Ssf localhost:8500; do
     sleep 2
