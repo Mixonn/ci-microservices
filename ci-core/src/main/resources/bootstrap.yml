@@ -8,7 +8,7 @@ spring:
       discovery:
         instance-id: "${spring.cloud.client.hostname}:${spring.application.name}:${server.port}"
         healthCheckInterval: 2s
-        health-check-path: "${management.server.servlet.context-path}/health"
+        health-check-path: "/actuator/health"
       config:
         dataKey: config
         prefix: apps/cimcroservices
