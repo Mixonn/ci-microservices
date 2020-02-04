@@ -1,18 +1,47 @@
-version: '3'
+version: '3.7'
 
 services:
+  es:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.5.2
+    container_name: es
+    hostname: es
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+    environment:
+      - node.name=es01
+      - discovery.type=single-node
+#      - cluster.name=es-docker-cluster
+#      - discovery.seed_hosts=es02,es03
+#      - cluster.initial_master_nodes=es01,es02,es03
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./es/data/01:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.5.2
+    environment:
+      ELASTICSEARCH_HOSTS: http://es:9200
+    ports:
+    - "5601:5601"
   consul:
     image: consul
     container_name: consul
     hostname: consul
     ports:
       - "8500:8500"
-#    environment:
-#      CONSUL_BIND_INTERFACE: eth0
+    volumes:
+      - ./consul-conf/consul.json:/consul/config/consul.json
   ci-core:
     container_name: ci-core
     hostname: ci-core
     build: ci-core
     ports:
     - "8001:8001"
-
