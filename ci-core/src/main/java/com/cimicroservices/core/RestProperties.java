@@ -1,4 +1,4 @@
-package com.cimicroservices.core.ping.config;
+package com.cimicroservices.core;
 
 import javax.validation.constraints.NotNull;
 import lombok.Data;

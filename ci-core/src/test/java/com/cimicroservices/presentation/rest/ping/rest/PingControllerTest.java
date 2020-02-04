@@ -1,4 +1,4 @@
-package com.cimicroservices.core.ping.rest;
+package com.cimicroservices.presentation.rest.ping.rest;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,6 +1,6 @@
-package com.cimicroservices.core.ping;
+package com.cimicroservices.presentation.rest.ping;
 
-import com.cimicroservices.core.ping.config.RestProperties;
+import com.cimicroservices.core.RestProperties;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

@@ -1,4 +1,4 @@
-package com.cimicroservices.core;
+package com.cimicroservices.configuration;
 
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Configuration;
