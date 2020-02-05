@@ -44,5 +44,4 @@ subprojects {
             mavenBom("org.springframework.boot:spring-boot-dependencies:2.2.1.RELEASE")
         }
     }
-
 }

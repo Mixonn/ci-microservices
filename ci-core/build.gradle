@@ -11,7 +11,7 @@ buildscript {
 }
 
 plugins {
-    id "com.diffplug.gradle.spotless" version "3.21.1"
+    id "com.diffplug.gradle.spotless" version "3.27.1"
 }
 
 println "Building $project.name with gradle $gradle.gradleVersion on JVM ${Jvm.current()}"
