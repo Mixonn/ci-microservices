@@ -3,6 +3,7 @@ buildscript {
     ext {
         lombokVersion = '1.18.4'
         springBootVersion = '2.1.1.RELEASE'
+        elasticsearchVersion = '7.5.2'
     }
     repositories {
         mavenLocal()

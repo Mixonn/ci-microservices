@@ -15,7 +15,6 @@ plugins {
 }
 
 println "Building $project.name with gradle $gradle.gradleVersion on JVM ${Jvm.current()}"
-
 dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
@@ -24,7 +23,10 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.2.1.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.2.1.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.2.1.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-elasticsearch', version: '2.2.4.RELEASE'
+
+//    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-elasticsearch', version: '2.2.4.RELEASE'
+//    compile group: 'org.elasticsearch', name: 'elasticsearch', version: "${elasticsearchVersion}"
+//    compile group: 'org.elasticsearch.client', name: 'elasticsearch-rest-high-level-client', version: "${elasticsearchVersion}"
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'junit' // excluding junit 4
