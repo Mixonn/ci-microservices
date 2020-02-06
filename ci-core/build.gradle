@@ -20,29 +20,30 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     compile group: 'io.projectreactor', name: 'reactor-core', version: '3.3.1.RELEASE'
 
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: springBootVersion
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: springBootVersion
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive', version: springBootVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-configuration-processor', version: springBootVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: springBootVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: springBootVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive', version: springBootVersion
 
-//    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-elasticsearch', version: '2.2.4.RELEASE'
-//    compile group: 'org.elasticsearch', name: 'elasticsearch', version: "${elasticsearchVersion}"
-//    compile group: 'org.elasticsearch.client', name: 'elasticsearch-rest-high-level-client', version: "${elasticsearchVersion}"
+//    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-elasticsearch', version: '2.2.4.RELEASE'
+//    implementation group: 'org.elasticsearch', name: 'elasticsearch', version: "${elasticsearchVersion}"
+//    implementation group: 'org.elasticsearch.client', name: 'elasticsearch-rest-high-level-client', version: "${elasticsearchVersion}"
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'junit' // excluding junit 4
     }
-    compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure-processor', version: springBootVersion
+    implementation group: 'org.springframework.boot', name: 'spring-boot-autoconfigure-processor', version: springBootVersion
 
     runtime group: 'org.springframework.cloud', name: 'spring-cloud-starter-consul-all', version: '2.2.0.RELEASE'
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-commons', version: '2.2.0.RELEASE'
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-commons', version: '2.2.0.RELEASE'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.0.1'
     testImplementation 'org.mockito:mockito-junit-jupiter:2.23.0'
     testImplementation 'com.tngtech.archunit:archunit:0.9.3'
     testImplementation 'de.adesso:junit-insights:1.1.0'
     testImplementation 'org.junit.platform:junit-platform-launcher:1.4.2'
-    compile group: 'io.projectreactor.tools', name: 'blockhound-junit-platform', version: '1.0.1.RELEASE'
+    implementation group: 'io.projectreactor.tools', name: 'blockhound-junit-platform', version: '1.0.1.RELEASE'
 
 }
 

@@ -2,15 +2,15 @@ package com.cimicroservices.presentation.rest.log;
 
 import com.cimicroservices.core.log.Log;
 import com.cimicroservices.core.log.LogService;
-import com.cimicroservices.presentation.rest.log.command.LogCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
+@RequestMapping("/log")
 @RequiredArgsConstructor
-public class LogController {
+class LogController {
 
   private final LogService logService;
 
@@ -20,7 +20,7 @@ public class LogController {
   }
 
   @PostMapping
-  Mono<Log> addLog(@RequestBody LogCommand logCommand) {
+  Mono<Log> addLog(@RequestBody CreateLogCommand logCommand) {
     return logService.addLog(logCommand.getUsername(), logCommand.getMessage());
   }
 }
