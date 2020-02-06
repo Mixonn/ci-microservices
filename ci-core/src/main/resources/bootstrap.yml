@@ -1,15 +1,23 @@
 spring:
   application:
     name: ci-core
+  data:
+    mongodb:
+      host: mongo
+      port: 27017
+      database: logs
   cloud:
     consul:
-      host: 127.0.0.1
+      host: consul
       port: 8500
       discovery:
-        instance-id: "${spring.cloud.client.hostname}:${spring.application.name}:${random.int[1,999999]}"
+        instance-id: "${spring.cloud.client.hostname}:${spring.application.name}:${server.port}"
+        healthCheckInterval: 2s
+        health-check-path: "/actuator/health"
       config:
         dataKey: config
         prefix: apps/cimcroservices
         defaultContext: ${spring.application.name}
         format: YAML
-
+server:
+  port: 8001
