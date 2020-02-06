@@ -1,6 +1,11 @@
 spring:
   application:
     name: ci-core
+  data:
+    mongodb:
+      host: mongo
+      port: 27017
+      database: logs
   cloud:
     consul:
       host: consul

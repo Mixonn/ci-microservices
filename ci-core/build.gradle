@@ -20,9 +20,10 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     compile group: 'io.projectreactor', name: 'reactor-core', version: '3.3.1.RELEASE'
 
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.2.1.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.2.1.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.2.1.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: springBootVersion
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: springBootVersion
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: springBootVersion
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb-reactive', version: springBootVersion
 
 //    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-elasticsearch', version: '2.2.4.RELEASE'
 //    compile group: 'org.elasticsearch', name: 'elasticsearch', version: "${elasticsearchVersion}"
@@ -31,7 +32,7 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'junit' // excluding junit 4
     }
-    compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure-processor', version: '2.2.1.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-autoconfigure-processor', version: springBootVersion
 
     runtime group: 'org.springframework.cloud', name: 'spring-cloud-starter-consul-all', version: '2.2.0.RELEASE'
     compile group: 'org.springframework.cloud', name: 'spring-cloud-commons', version: '2.2.0.RELEASE'

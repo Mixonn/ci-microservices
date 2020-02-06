@@ -2,7 +2,7 @@
 buildscript {
     ext {
         lombokVersion = '1.18.4'
-        springBootVersion = '2.1.1.RELEASE'
+        springBootVersion = '2.2.1.RELEASE'
         elasticsearchVersion = '7.5.2'
     }
     repositories {
@@ -42,7 +42,7 @@ subprojects {
 
     dependencyManagement {
         imports {
-            mavenBom("org.springframework.boot:spring-boot-dependencies:2.2.1.RELEASE")
+            mavenBom("org.springframework.boot:spring-boot-dependencies:${springBootVersion}")
         }
     }
 }

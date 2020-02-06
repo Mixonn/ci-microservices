@@ -21,6 +21,17 @@
                 "interval": "60s",
                 "timeout": "5s"
             }
+        },
+        {
+            "name": "MongoDB",
+            "port": 5601,
+            "check": {
+                "id": "MongoDB-health",
+                "name": "HTTP health",
+                "http": "http://mongo:27017/",
+                "interval": "60s",
+                "timeout": "5s"
+            }
         }
     ]
 }
