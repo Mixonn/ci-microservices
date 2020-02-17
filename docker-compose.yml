@@ -31,6 +31,28 @@ services:
       ELASTICSEARCH_HOSTS: http://es:9200
     ports:
     - "5601:5601"
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    hostname: grafana
+    restart: always
+    ports:
+      - "8091:3000"
+#    volumes:
+#      - grafana-volume
+  graphite:
+    image: graphiteapp/graphite-statsd:1.1.6-1
+    container_name: graphite
+    hostname: graphite
+    restart: always
+    ports:
+    - "8090:80"
+    expose:
+      - 8080
+      - 2003
+      - 2004
+      - 2023
+      - 2024
   mongo:
     image: mongo
     container_name: mongo
@@ -52,8 +74,12 @@ services:
     container_name: ci-core
     hostname: ci-core
     build: ci-core
+    environment:
+#      DUMB Cloud name
+      CLOUD_NAME: "pl-poz-01"
     volumes:
       - ./ci-core/src/main/resources/bootstrap.yml:/usr/app/bootstrap.yml
+      - ./ci-core/src/main/resources/application.yml:/usr/app/application.yml
     ports:
     - "8001:8001"
-    command: ["java", "-jar", "/usr/app/ci-core.jar", "--spring.config.location=/usr/app/bootstrap.yml"]
+    command: ["java", "-jar", "/usr/app/ci-core.jar", "--spring.config.location=/usr/app/bootstrap.yml,/usr/app/application.yml"]

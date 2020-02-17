@@ -1,4 +1,4 @@
-package com.cimicroservices.configuration;
+package com.cimicroservices.config;
 
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Configuration;
@@ -7,4 +7,4 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 @Configuration
 @EnableWebFlux
 @EnableDiscoveryClient
-class CiCoreConfiguration {}
+public class CiCoreConfiguration {}
