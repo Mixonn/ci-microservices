@@ -32,6 +32,28 @@
                 "interval": "60s",
                 "timeout": "5s"
             }
+        },
+        {
+            "name": "Graphite",
+            "port": 8090,
+            "check": {
+                "id": "Graphite-health",
+                "name": "HTTP health",
+                "http": "http://graphite:8080/",
+                "interval": "60s",
+                "timeout": "5s"
+            }
+        },
+        {
+            "name": "Grafana",
+            "port": 8091,
+            "check": {
+                "id": "Grafana-health",
+                "name": "HTTP health",
+                "http": "http://grafana:3000/",
+                "interval": "60s",
+                "timeout": "5s"
+            }
         }
     ]
 }

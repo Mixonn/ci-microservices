@@ -2,7 +2,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: metrics, health, graphite
+        include: metrics, health, info
   metrics:
     export:
       graphite:

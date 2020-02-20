@@ -35,16 +35,14 @@ services:
     image: grafana/grafana
     container_name: grafana
     hostname: grafana
-    restart: always
+    volumes:
+    - ./grafana/grafana-datasources.yml:/etc/grafana/provisioning/datasources/graphite.yml
     ports:
       - "8091:3000"
-#    volumes:
-#      - grafana-volume
   graphite:
     image: graphiteapp/graphite-statsd:1.1.6-1
     container_name: graphite
     hostname: graphite
-    restart: always
     ports:
     - "8090:80"
     expose:
@@ -74,6 +72,11 @@ services:
     container_name: ci-core
     hostname: ci-core
     build: ci-core
+    depends_on:
+      - mongo
+      - consul
+      - graphite
+      - grafana
     environment:
 #      DUMB Cloud name
       CLOUD_NAME: "pl-poz-01"

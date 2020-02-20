@@ -1,5 +1,6 @@
 package com.cimicroservices.config;
 
+import io.micrometer.core.aop.TimedAspect;
 import io.micrometer.core.instrument.MeterRegistry;
 import java.util.Optional;
 import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCustomizer;
@@ -29,5 +30,10 @@ public class MetricsConfiguration {
   public MeterRegistry customizedMeterRegistry(MeterRegistry meterRegistry) {
     basePrefix().customize(meterRegistry);
     return meterRegistry;
+  }
+
+  @Bean
+  public TimedAspect timedAspect(MeterRegistry customizedMeterRegistry) {
+    return new TimedAspect(customizedMeterRegistry);
   }
 }
