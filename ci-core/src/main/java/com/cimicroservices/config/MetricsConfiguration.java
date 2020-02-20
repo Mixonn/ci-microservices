@@ -7,10 +7,12 @@ import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCusto
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
 @EnableScheduling
+@Profile("!dev")
 public class MetricsConfiguration {
 
   @Bean
@@ -20,7 +22,7 @@ public class MetricsConfiguration {
             .config()
             .commonTags(
                 "application",
-                "myCustomNameApp",
+                "flashcards",
                 "cloud",
                 Optional.ofNullable(System.getenv("CLOUD_NAME")).orElse("unknown"));
   }
