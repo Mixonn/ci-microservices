@@ -12,7 +12,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @Configuration
 @EnableScheduling
-@Profile("!dev")
+@Profile("metrics")
 public class MetricsConfiguration {
 
   @Bean
@@ -22,7 +22,7 @@ public class MetricsConfiguration {
             .config()
             .commonTags(
                 "application",
-                "flashcards",
+                "ciCore",
                 "cloud",
                 Optional.ofNullable(System.getenv("CLOUD_NAME")).orElse("unknown"));
   }
