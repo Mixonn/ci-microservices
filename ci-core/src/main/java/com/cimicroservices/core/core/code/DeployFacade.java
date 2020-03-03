@@ -1,4 +1,4 @@
-package com.cimicroservices.core.code;
+package com.cimicroservices.core.core.code;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.cimicroservices.config;
+package com.cimicroservices.core.config;
 
 import io.micrometer.core.aop.TimedAspect;
 import io.micrometer.core.instrument.MeterRegistry;

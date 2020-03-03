@@ -14,11 +14,13 @@ buildscript {
         jcenter()
     }
     dependencies {
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:3.21.1"
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
 
 plugins {
+    id "com.diffplug.gradle.spotless" version "3.27.1"
     id "io.spring.dependency-management" version "1.0.8.RELEASE"
 }
 

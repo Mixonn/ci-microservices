@@ -77,7 +77,6 @@ services:
       - graphite
       - grafana
     environment:
-#      DUMB Cloud name
       CLOUD_NAME: "pl-poz-01"
     volumes:
       - ./ci-core/src/main/resources/bootstrap.yml:/usr/app/bootstrap.yml
@@ -89,5 +88,27 @@ services:
               "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005",
               "-jar",
               "/usr/app/ci-core.jar",
+              "--spring.profiles.active=metrics",
+              "--spring.config.location=/usr/app/bootstrap.yml,/usr/app/application.yml"]
+  deploy-runner:
+    container_name: deploy-runner
+    hostname: deploy-runner
+    build: deploy-runner
+    depends_on:
+      - consul
+      - graphite
+      - grafana
+    environment:
+      CLOUD_NAME: "pl-poz-01"
+    volumes:
+      - ./deploy-runner/src/main/resources/bootstrap.yml:/usr/app/bootstrap.yml
+      - ./deploy-runner/src/main/resources/application.yml:/usr/app/application.yml
+    ports:
+      - "8002:8002"
+      - "5006:5006"
+    command: ["java",
+              "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5006",
+              "-jar",
+              "/usr/app/deploy-runner.jar",
               "--spring.profiles.active=metrics",
               "--spring.config.location=/usr/app/bootstrap.yml,/usr/app/application.yml"]

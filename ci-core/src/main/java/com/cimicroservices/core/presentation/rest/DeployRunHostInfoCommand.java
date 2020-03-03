@@ -1,4 +1,4 @@
-package com.cimicroservices.presentation.rest;
+package com.cimicroservices.core.presentation.rest;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

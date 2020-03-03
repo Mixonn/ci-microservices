@@ -1,0 +1,5 @@
+management:
+  metrics:
+    export:
+      graphite:
+        enabled: false # Whether exporting of metrics to Graphite is enabled.

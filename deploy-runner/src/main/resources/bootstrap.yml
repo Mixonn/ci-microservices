@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: deploy-runner
+  cloud:
+    consul:
+      host: consul
+      port: 8500
+      discovery:
+        instance-id: "${spring.cloud.client.hostname}:${spring.application.name}:${server.port}"
+        healthCheckInterval: 2s
+        health-check-path: "/actuator/health"
+      config:
+        dataKey: config
+        prefix: apps/cimcroservices
+        defaultContext: ${spring.application.name}
+        format: YAML
+server:
+  port: 8002
