@@ -1,6 +1,6 @@
 #!/bin/sh
 gradle clean build
-docker-compose up -d ci-core deploy-runner
+docker-compose up -d --build ci-core deploy-runner
 while ! curl -Ssf localhost:8500; do
     sleep 2
 done

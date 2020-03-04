@@ -39,6 +39,7 @@ dependencies {
         exclude group: 'junit' // excluding junit 4
     }
     implementation group: 'org.springframework.boot', name: 'spring-boot-autoconfigure-processor'
+    testImplementation('org.springframework.cloud:spring-cloud-starter-contract-verifier:2.2.0.RELEASE')
 
 
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.0.1'

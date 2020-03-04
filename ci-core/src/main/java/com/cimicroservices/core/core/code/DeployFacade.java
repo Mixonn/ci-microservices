@@ -2,6 +2,7 @@ package com.cimicroservices.core.core.code;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 @Service
 @RequiredArgsConstructor
@@ -12,8 +13,8 @@ public class DeployFacade {
     return toDto(deployRunService.createDeploy(fromDto(deployDTO)));
   }
 
-  public void runDeploy(String deployId, String host, int port) {
-    deployRunService.runDeploy(deployId, host, port);
+  public Mono<Integer> runDeploy(String deployId, String host, int port) {
+    return deployRunService.runDeploy(deployId, host, port);
   }
 
   private DeployDTO toDto(Deploy deploy) {

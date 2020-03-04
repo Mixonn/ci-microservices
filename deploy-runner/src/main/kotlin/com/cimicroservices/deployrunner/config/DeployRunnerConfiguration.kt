@@ -5,4 +5,4 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 @EnableDiscoveryClient
-open class CiCoreConfiguration
+open class DeployRunnerConfiguration

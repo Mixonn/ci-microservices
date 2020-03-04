@@ -19,10 +19,10 @@ class DeployController {
   }
 
   @PostMapping("/deploy/{deployId}/run")
-  public void runDeploy(
+  public Mono<Integer> runDeploy(
       @PathVariable String deployId,
       @RequestBody DeployRunHostInfoCommand deployRunHostInfoCommand) {
-    deployFacade.runDeploy(
+    return deployFacade.runDeploy(
         deployId, deployRunHostInfoCommand.getHost(), deployRunHostInfoCommand.getPort());
   }
 

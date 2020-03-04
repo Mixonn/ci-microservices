@@ -1,6 +1,6 @@
 spring:
   application:
-    name: deploy-runner
+    name: app-deploy-runner
   cloud:
     consul:
       host: consul

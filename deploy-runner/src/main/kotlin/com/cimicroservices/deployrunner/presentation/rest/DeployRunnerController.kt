@@ -1,5 +1,6 @@
 package com.cimicroservices.deployrunner.presentation.rest
 
+import javax.validation.constraints.NotBlank
 import lombok.extern.slf4j.Slf4j
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
-import javax.validation.constraints.NotBlank
 
 inline fun <reified T> T.logger(): Logger {
     if (T::class.isCompanion) {
@@ -26,8 +26,11 @@ class DeployRunnerController {
 
     @PostMapping("/run/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    fun runDeploy(@PathVariable @NotBlank id: String, @RequestBody deployRunHostInfoCommand: DeployRunHostInfoCommand) {
+    fun runDeploy(
+        @PathVariable @NotBlank id: String,
+        @RequestBody deployRunHostInfoCommand: DeployRunHostInfoCommand
+    ): Int {
         logger.info("Received deploy to run: $deployRunHostInfoCommand")
-        return
+        return 252125
     }
 }
