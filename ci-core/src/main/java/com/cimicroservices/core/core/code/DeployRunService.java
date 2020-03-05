@@ -17,14 +17,14 @@ class DeployRunService {
     this.webClient = webClientBuilder.build();
   }
 
-  Mono<Integer> runDeploy(String deployRootId, String host, int port) {
+  Mono<String> runDeploy(String deployRootId, String host, int port) {
     return webClient
         .post()
         .uri("http://app-deploy-runner/run/{deployId}", deployRootId)
         .body(BodyInserters.fromValue(new RunDeployDTO(host, port)))
         .retrieve()
-        .bodyToMono(Integer.class)
-        .timeout(Duration.ofMillis(200));
+        .bodyToMono(String.class)
+        .timeout(Duration.ofMillis(1000));
   }
 
   public Deploy createDeploy(Deploy fromDto) {

@@ -29,8 +29,8 @@ class DeployRunnerController {
     fun runDeploy(
         @PathVariable @NotBlank id: String,
         @RequestBody deployRunHostInfoCommand: DeployRunHostInfoCommand
-    ): Int {
+    ): String {
         logger.info("Received deploy to run: $deployRunHostInfoCommand")
-        return 252125
+        return "252125"
     }
 }

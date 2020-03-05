@@ -13,7 +13,7 @@ public class DeployFacade {
     return toDto(deployRunService.createDeploy(fromDto(deployDTO)));
   }
 
-  public Mono<Integer> runDeploy(String deployId, String host, int port) {
+  public Mono<String> runDeploy(String deployId, String host, int port) {
     return deployRunService.runDeploy(deployId, host, port);
   }
 

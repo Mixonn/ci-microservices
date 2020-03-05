@@ -34,7 +34,7 @@ class DeployController {
   }
 
   @PostMapping("/deploy/{deployId}/run")
-  public Mono<Integer> runDeploy(
+  public Mono<String> runDeploy(
       @PathVariable String deployId,
       @RequestBody DeployRunHostInfoCommand deployRunHostInfoCommand) {
     return deployFacade.runDeploy(
