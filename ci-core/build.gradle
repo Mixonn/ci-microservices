@@ -29,6 +29,7 @@ dependencies {
     implementation group: 'io.micrometer', name: 'micrometer-core'
     compile group: 'io.micrometer', name: 'micrometer-registry-graphite'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+    compile 'org.springframework.cloud:spring-cloud-starter-sleuth:2.2.0.RELEASE'
 
 //    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-elasticsearch', version: '2.2.4.RELEASE'
 //    implementation group: 'org.elasticsearch', name: 'elasticsearch', version: "${elasticsearchVersion}"

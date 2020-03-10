@@ -4,6 +4,7 @@ import com.cimicroservices.core.core.code.DeployDTO;
 import com.cimicroservices.core.core.code.DeployFacade;
 import java.time.Instant;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -13,6 +14,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 class DeployController {
 
   private final DeployFacade deployFacade;
