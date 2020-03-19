@@ -8,3 +8,14 @@ spring:
         enabled: false
       discovery:
         enabled: false
+  sleuth:
+    annotation:
+      enabled: false
+  zipkin:
+    enabled: false
+
+management:
+  metrics:
+    export:
+      graphite:
+        enabled: false # Whether exporting of metrics to Graphite is enabled.

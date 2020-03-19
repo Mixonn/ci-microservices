@@ -46,6 +46,10 @@ dependencies {
     implementation group: 'io.micrometer', name: 'micrometer-core'
     implementation group: 'io.micrometer', name: 'micrometer-registry-graphite'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator'
+    implementation 'org.springframework.cloud:spring-cloud-starter-sleuth:2.2.0.RELEASE'
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-zipkin', version: '2.2.0.RELEASE'
+
+
     runtime group: 'org.springframework.cloud', name: 'spring-cloud-starter-consul-all', version: '2.2.0.RELEASE'
     implementation group: 'org.springframework.cloud', name: 'spring-cloud-commons', version: '2.2.0.RELEASE'
 

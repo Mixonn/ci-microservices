@@ -1,9 +1,0 @@
-management:
-  metrics:
-    export:
-      graphite:
-        enabled: false # Whether exporting of metrics to Graphite is enabled.
-
-stubrunner:
-  ids-to-service-ids:
-    deploy-runner: 'app-deploy-runner'

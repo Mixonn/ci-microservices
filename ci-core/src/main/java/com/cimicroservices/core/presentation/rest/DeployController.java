@@ -28,6 +28,7 @@ class DeployController {
   public Mono<String> runDeploy(
       @PathVariable String deployId,
       @RequestBody DeployRunHostInfoCommand deployRunHostInfoCommand) {
+    log.info("New event");
     return deployFacade.runDeploy(
         deployId, deployRunHostInfoCommand.getHost(), deployRunHostInfoCommand.getPort());
   }

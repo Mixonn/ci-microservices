@@ -60,6 +60,12 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: password
     ports:
       - 27017:27017
+  zipkin:
+    image: openzipkin/zipkin-slim:2.20.2
+    container_name: zipkin
+    hostname: zipkin-host
+    ports:
+    - "9411:9411"
   consul:
     image: consul
     container_name: consul

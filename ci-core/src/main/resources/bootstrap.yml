@@ -14,5 +14,27 @@ spring:
         prefix: apps/cimcroservices
         defaultContext: ${spring.application.name}
         format: YAML
+  sleuth:
+    sampler:
+      probability: 1
+  zipkin:
+    base-url: 'http://zipkin-host:9411/'
 server:
   port: 8001
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics, health, info
+  metrics:
+    export:
+      graphite:
+        duration-units: milliseconds # Base time unit used to report durations.
+        enabled: true # Whether exporting of metrics to Graphite is enabled.
+        host: graphite # Host of the Graphite server to receive exported metrics.
+        port: 2004 # Port of the Graphite server to receive exported metrics.
+        protocol: pickled # Protocol to use while shipping data to Graphite.
+        rate-units: seconds # Base time unit used to report rates.
+        step: 2s # Step size (i.e. reporting frequency) to use.
+        tags-as-prefix: application # For the default naming convention, turn the specified tag keys into part of the metric prefix.
