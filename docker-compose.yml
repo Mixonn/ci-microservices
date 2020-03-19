@@ -3,8 +3,6 @@ version: '3.7'
 services:
   es:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.5.2
-    container_name: es
-    hostname: es
     deploy:
       resources:
         limits:
@@ -33,16 +31,12 @@ services:
     - "5601:5601"
   grafana:
     image: grafana/grafana
-    container_name: grafana
-    hostname: grafana
     volumes:
     - ./grafana/grafana-datasources.yml:/etc/grafana/provisioning/datasources/graphite.yml
     ports:
       - "8091:3000"
   graphite:
     image: graphiteapp/graphite-statsd:1.1.6-1
-    container_name: graphite
-    hostname: graphite
     ports:
     - "8090:80"
     expose:
@@ -53,8 +47,6 @@ services:
       - 2024
   mongo:
     image: mongo
-    container_name: mongo
-    hostname: mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: user
       MONGO_INITDB_ROOT_PASSWORD: password
@@ -62,26 +54,24 @@ services:
       - 27017:27017
   zipkin:
     image: openzipkin/zipkin-slim:2.20.2
-    container_name: zipkin
-    hostname: zipkin-host
     ports:
     - "9411:9411"
+#    expose:
+#      - 9411
   consul:
     image: consul
-    container_name: consul
-    hostname: consul
     ports:
       - "8500:8500"
     volumes:
       - ./consul-conf/consul.json:/consul/config/consul.json
   ci-core:
-    container_name: ci-core
     hostname: ci-core
     build: ci-core
     depends_on:
       - consul
       - graphite
       - grafana
+      - zipkin
     environment:
       CLOUD_NAME: "pl-poz-01"
     volumes:
@@ -97,13 +87,13 @@ services:
               "--spring.profiles.active=metrics",
               "--spring.config.location=/usr/app/bootstrap.yml,/usr/app/application.yml"]
   deploy-runner:
-    container_name: deploy-runner
     hostname: deploy-runner
     build: deploy-runner
     depends_on:
       - consul
       - graphite
       - grafana
+      - zipkin
     environment:
       CLOUD_NAME: "pl-poz-01"
     volumes:

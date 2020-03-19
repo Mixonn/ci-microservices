@@ -1,9 +1,11 @@
 package com.cimicroservices.core.core.code.deploy;
 
 import com.cimicroservices.core.core.code.DeployDTO;
+import com.cimicroservices.core.core.code.ExternalServiceException;
 import java.time.Duration;
 import lombok.Builder;
 import lombok.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -24,6 +26,15 @@ public class DeployRunService {
         .uri("http://app-deploy-runner/run/{deployId}", deployRootId)
         .body(BodyInserters.fromValue(new RunDeployDTO(host, port)))
         .retrieve()
+        .onStatus(
+            HttpStatus::isError,
+            response ->
+                Mono.error(
+                    new ExternalServiceException(
+                        "app-deploy-runner",
+                        response.rawStatusCode(),
+                        "",
+                        "External service error")))
         .bodyToMono(String.class)
         .timeout(Duration.ofMillis(2000));
   }

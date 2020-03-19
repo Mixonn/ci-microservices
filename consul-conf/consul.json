@@ -54,6 +54,17 @@
                 "interval": "60s",
                 "timeout": "5s"
             }
+        },
+        {
+            "name": "Zipkin",
+            "port": 9411,
+            "check": {
+                "id": "Zipkin-health",
+                "name": "HTTP health",
+                "http": "http://zipkin:9411/health",
+                "interval": "60s",
+                "timeout": "5s"
+            }
         }
     ]
 }

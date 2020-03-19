@@ -18,7 +18,7 @@ spring:
     sampler:
       probability: 1
   zipkin:
-    base-url: 'http://zipkin-host:9411/'
+    base-url: 'http://zipkin:9411/'
 server:
   port: 8001
 
